@@ -25,7 +25,7 @@ def get_sessdata():
         
     return header_cookie
 
-def dm_history(oid, date):
+def dm_history(oid, date) -> list:
     r"""
     get and translate the seg.so binary file to a list of dictionary and return it. 
     
@@ -34,6 +34,9 @@ def dm_history(oid, date):
     
     date: 
         the date of the danmaku history
+        
+    Returns:
+        A list contains dictionaries of danmaku information. 
     """
     # url to get the seg.so binary file of history danmaku
     url_history=f"https://api.bilibili.com/x/v2/dm/web/history/seg.so?type=1&oid={oid}&date={date}"
@@ -93,7 +96,7 @@ def dm_list_to_xml(dm_list:list, oid, date):
         '''
         A for loop iterating each dictionary in the danmaku list. Retrieve values in the dictionary and append them to a string storing previous bilibili xml <d> tag, which means danmaku. Insert these strings before the last elements of contents list. 
         
-        Because the “pool” information would not appear in the danmaku information dictionary except that it's on the subtitle pool or special pool for sure, a condition ternary operator is implemented in the position of pool information. 
+        Because the “pool” information would not appear in the danmaku information dictionary except that it's on the subtitle pool or special pool for sure, a condition ternary operator is used in the position of pool information. 
         Same for the progress, color information.
         '''
         for dm_dict in dm_list:
