@@ -120,4 +120,3 @@ if __name__ == '__main__':
     date = sys.argv[2]
     dm_list = dm_history(oid, date)
     dm_list_to_xml(dm_list, oid, date)
-    
