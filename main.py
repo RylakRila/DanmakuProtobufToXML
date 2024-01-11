@@ -22,7 +22,7 @@ def get_sessdata():
         if cookie['name'] == "SESSDATA":
             header_cookie = f"{cookie['name']}={cookie['value']};"
             break
-        
+    
     return header_cookie
 
 def dm_history(oid, date) -> list:
@@ -46,7 +46,8 @@ def dm_history(oid, date) -> list:
     
     # set the header dictionary for http request
     headers = {
-        'cookie': header_cookie
+        'cookie': header_cookie,
+        'User-Agent': "Mozilla/5.0"
     }
     
     # Send a GET request to history danmaku url with correct cookie info in header
